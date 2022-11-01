@@ -25,4 +25,11 @@
         </div>
     </div>
 </div>
+
+    <form action="{{route('insert')}}" method="post">
+        @csrf
+        <input type="text" name="name">
+        <input type="email" name="email">
+        <input type="submit">
+    </form>
 @endsection

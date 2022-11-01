@@ -17,6 +17,7 @@ Route::group(['prefix' => 'profile'], function () {
     Route::get('/password/{pass?}', [AdminController::class, 'password']);
 });
 
+Route::post('insert', [HomeController::class , 'insert'])->name('insert');
 Route::get('contact',[ProfileController::class, 'contact'])->middleware('auth');
 
 
