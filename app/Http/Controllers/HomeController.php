@@ -17,7 +17,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -27,11 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::where(['id'=>1])->get();
-        $user2 = User::find(2);
-        $user3 = User::where('id',1)->first();
-        $user4 = User::where('id',1)->select('name','created_at')->get();
-        return view('home', compact('users','user2','user3'));
+//        $users = User::where(['id'=>1])->get();
+//        $user2 = User::find(2);
+//        $user3 = User::where('id',1)->first();
+//        $user4 = User::where('id',1)->select('name','created_at')->get();
+//        return view('home', compact('users','user2','user3'));
+        return view('landing.home');
     }
 
     public function insert (Request $request) {

@@ -7,18 +7,20 @@ use App\Http\Controllers\HomeController;
 
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
-Route::get('/go', [HomeController::class, 'go'])->name('go');
-
-Route::group(['prefix' => 'profile'], function () {
-    Route::get('/test2/{x?}', [ProfileController::class, 'test2']);
-    Route::get('/password/{pass?}', [UserController::class, 'password']);
-    Route::get('/password/{pass?}', [AdminController::class, 'password']);
-});
-
-Route::post('insert', [HomeController::class , 'insert'])->name('insert');
-Route::get('contact',[ProfileController::class, 'contact'])->middleware('auth');
+//Route::get('/home', [HomeController::class, 'index'])->name('home');
+//
+//Route::get('/go', [HomeController::class, 'go'])->name('go');
+//
+//Route::group(['prefix' => 'profile'], function () {
+//    Route::get('/test2/{x?}', [ProfileController::class, 'test2']);
+//    Route::get('/password/{pass?}', [UserController::class, 'password']);
+//    Route::get('/password/{pass?}', [AdminController::class, 'password']);
+//});
+//
+//Route::post('insert', [HomeController::class , 'insert'])->name('insert');
+//Route::get('contact',[ProfileController::class, 'contact'])->middleware('auth');
 
 
 
