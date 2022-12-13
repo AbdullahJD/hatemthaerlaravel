@@ -1,5 +1,7 @@
 @extends('landing.master')
-
+@push('title')
+    asdsa
+@endpush
 @push('css')
     <style>
         body {

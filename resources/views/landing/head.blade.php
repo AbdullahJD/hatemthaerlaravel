@@ -11,7 +11,7 @@
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="{{asset('landing/css/style.css')}}">
 
-    <title>Prixima BS5 Template</title>
+    <title>@stack('title')</title>
 
     @stack('css')
 </head>

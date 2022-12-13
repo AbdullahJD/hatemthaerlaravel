@@ -8,6 +8,10 @@ use App\Http\Controllers\HomeController;
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/formData', [HomeController::class, 'formData'])->name('formData');
+Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
+
+//Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
 
 //Route::get('/home', [HomeController::class, 'index'])->name('home');
 //
