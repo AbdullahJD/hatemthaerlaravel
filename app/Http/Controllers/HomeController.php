@@ -82,6 +82,40 @@ class HomeController extends Controller
         ];
     }
 
+    public function updateDataForm($id) {
+        $customer = Customer::find($id);
+
+        if(!is_null($customer)) {
+            return view('update', compact('customer'));
+        } else {
+            return  "Not Found";
+        }
+
+    }
+    public function updateData (Request $request) {
+        $erors_validation = [
+            'name' => 'required|unique:customers,name',
+            'comment' => 'required',
+            'is_active' => 'required',
+            'price' => 'required|numeric|max:5',
+        ];
+        $messages = $this->messages();
+        $validator = Validator::make($request->all(),$erors_validation,$messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all());
+//            return $validator->errors()->first();
+
+        }
+
+
+        $updateData = Customer::where('id', $request->id)->update([
+            'name' => $request->name,
+        ]);
+
+        return redirect()->back()->with(['success' => 'it\'s Done']);
+    }
+
     public function insert (Request $request) {
 
         // $insert = new AdminTh();

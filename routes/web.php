@@ -12,7 +12,9 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/formData', [HomeController::class, 'formData'])->name('formData');
+Route::get('/updateDataForm/{id}', [HomeController::class, 'updateDataForm'])->name('updateDataForm');
 Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
+Route::post('/updateData', [HomeController::class, 'updateData'])->name('updateData');
 
 //Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
 

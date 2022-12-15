@@ -12,7 +12,7 @@
 
 
 @if(Session::has('success'))
-<h1>{{Session::get('success')}}</h1>
+    <h1>{{Session::get('success')}}</h1>
 @endif
 
 {{--@foreach($errors->all() as $error)--}}
@@ -23,19 +23,20 @@
     <h4>{{$errors->first()}}</h4>
 @endif
 
-<form action="{{route('sendData')}}" method="post">
+<form action="{{route('updateData')}}" method="post">
     @csrf
-{{--    @error('name')--}}
-{{--        {{$message}}--}}
-{{--    @enderror--}}
-    <input type="text" name="name" value="" placeholder="{{__('website.name')}}"><br>
+    {{--    @error('name')--}}
+    {{--        {{$message}}--}}
+    {{--    @enderror--}}
+    <input type="text" name="name" value="{{$customer->name}}" placeholder="{{__('website.name')}}"><br>
     @error('comment')
     {{$message}}
     @enderror
     <textarea name="comment" placeholder="comment">
+        {{$customer->comment}}
     </textarea><br>
-    is_active: <input type="checkbox" name="is_active" value="1"><br>
-    <input type="text" name="price" value=""><br>
-
+    is_active: <input type="checkbox" name="is_active" @if($customer->is_active == 1) checked="checked" @endif value="1"><br>
+    <input type="text" name="price" value="{{$customer->price}}"><br>
+    <input type="hidden" name="id" value="{{$customer->id}}">
     <input type="submit" value="Send My Data"><br>
 </form>
