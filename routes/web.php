@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 
 
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function(){
+
+
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
@@ -68,6 +71,6 @@ Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
 ////    });
 //});
 
-
+});
 
 

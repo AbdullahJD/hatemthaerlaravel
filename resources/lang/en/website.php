@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'welcome' => 'Welcome',
-    'name_error' => 'please enter your name',
+    'nameRequired' => 'You must enter your name',
+    'name' => 'name',
 ];

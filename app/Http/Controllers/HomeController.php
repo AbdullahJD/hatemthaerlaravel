@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     public function messages() {
         return [
-            'name.required' => 'الاسم مطلوب',
+            'name.required' => trans('website.nameRequired'),
             'name.unique' => 'الاسم متكرر',
         ];
     }

@@ -1,3 +1,16 @@
+<ul>
+    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+        <li>
+            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        </li>
+    @endforeach
+</ul>
+
+
+
+
 @if(Session::has('success'))
 <h1>{{Session::get('success')}}</h1>
 @endif
@@ -15,7 +28,7 @@
 {{--    @error('name')--}}
 {{--        {{$message}}--}}
 {{--    @enderror--}}
-    <input type="text" name="name" value="" placeholder="name"><br>
+    <input type="text" name="name" value="" placeholder="{{__('website.name')}}"><br>
     @error('comment')
     {{$message}}
     @enderror
