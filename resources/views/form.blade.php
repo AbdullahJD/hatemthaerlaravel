@@ -23,7 +23,7 @@
     <h4>{{$errors->first()}}</h4>
 @endif
 
-<form action="{{route('sendData')}}" method="post">
+<form action="{{route('sendData')}}" method="post" enctype="multipart/form-data">
     @csrf
 {{--    @error('name')--}}
 {{--        {{$message}}--}}
@@ -36,6 +36,7 @@
     </textarea><br>
     is_active: <input type="checkbox" name="is_active" value="1"><br>
     <input type="text" name="price" value=""><br>
+    <input type="file" name="image">
 
     <input type="submit" value="Send My Data"><br>
 </form>

@@ -15,6 +15,8 @@ Route::get('/formData', [HomeController::class, 'formData'])->name('formData');
 Route::get('/updateDataForm/{id}', [HomeController::class, 'updateDataForm'])->name('updateDataForm');
 Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
 Route::post('/updateData', [HomeController::class, 'updateData'])->name('updateData');
+Route::get('/deleteData/{id}', [HomeController::class, 'deleteData'])->name('deleteData');
+Route::get('/restoreData/{id}', [HomeController::class, 'restoreData'])->name('restoreData');
 
 //Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');
 

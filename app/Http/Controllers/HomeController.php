@@ -42,6 +42,10 @@ class HomeController extends Controller
     }
 
     public function sendData(Request $request) {
+        $extention = $request->image->extension();
+        $file_name = time().'.'.$extention;
+
+        $request->image->move('images',$file_name);
 
 //        $insertData = new Customer();
 //        $insertData->name = "ahned";
@@ -70,6 +74,7 @@ class HomeController extends Controller
             'comment' => $request->comment,
             'is_active' => $request->is_active,
             'price' => $request->price,
+            'image' => $file_name,
         ]);
 
         return redirect()->back()->with(['success' => 'it\'s Done']);
@@ -114,6 +119,28 @@ class HomeController extends Controller
         ]);
 
         return redirect()->back()->with(['success' => 'it\'s Done']);
+    }
+
+    public function deleteData($id) {
+        $customer = Customer::find($id);
+        if (!is_null($customer)) {
+            $customer->delete();
+        } else {
+            return "This customer Id not exists";
+        }
+
+        return "it's deleted";
+    }
+
+    public function restoreData($id) {
+        $customer = Customer::where('id',$id);
+        if (!is_null($customer)) {
+            $customer->restore();
+        } else {
+            return "This customer Id not exists";
+        }
+
+        return "it's restored";
     }
 
     public function insert (Request $request) {
