@@ -23,7 +23,7 @@
     <h4>{{$errors->first()}}</h4>
 @endif
 
-<form action="{{route('sendData')}}" method="post" enctype="multipart/form-data">
+<form method="post" id="sendData" enctype="multipart/form-data">
     @csrf
 {{--    @error('name')--}}
 {{--        {{$message}}--}}
@@ -38,5 +38,30 @@
     <input type="text" name="price" value=""><br>
     <input type="file" name="image">
 
-    <input type="submit" value="Send My Data"><br>
+    <input type="submit" class="send_data" value="Send My Data"><br>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+
+<script>
+    $('.send_data').on('click', function (e) {
+       e.preventDefault();
+        var formData = new FormData($('#sendData')[0]);
+       $.ajax({
+           type: 'post',
+           enctype: 'multipart/form-data',
+           url: "{{route('sendData')}}",
+           processData: false,
+           contentType: false,
+           cache: false,
+           data: formData,
+           success: function (data) {
+                console.log(data);
+           },
+           error: function (data) {
+                console.log(data);
+            }
+           }
+       );
+    });
+</script>

@@ -11,6 +11,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/showData', [HomeController::class, 'showData'])->name('showData');
 Route::get('/formData', [HomeController::class, 'formData'])->name('formData');
 Route::get('/updateDataForm/{id}', [HomeController::class, 'updateDataForm'])->name('updateDataForm');
 Route::post('/sendData', [HomeController::class, 'sendData'])->name('sendData');

@@ -37,11 +37,17 @@ class HomeController extends Controller
         return view('landing.home');
     }
 
+    public function showData () {
+        $customers = Customer::get();
+        return view('show', compact('customers'));
+    }
+
     public function  formData () {
         return view('form');
     }
 
     public function sendData(Request $request) {
+        dd($request->all());
         $extention = $request->image->extension();
         $file_name = time().'.'.$extention;
 
@@ -118,7 +124,7 @@ class HomeController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect()->back()->with(['success' => 'it\'s Done']);
+        return redirect()->route('showData');
     }
 
     public function deleteData($id) {
