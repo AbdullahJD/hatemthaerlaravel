@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
 
     public function sendData(Request $request) {
-        dd($request->all());
+
         $extention = $request->image->extension();
         $file_name = time().'.'.$extention;
 
@@ -69,9 +69,14 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(),$erors_validation,$messages);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all());
+//            return redirect()->back()->withErrors($validator)->withInput($request->all());
 //            return $validator->errors()->first();
 
+            return response()->json([
+                'status' => false,
+                'message' => $validator->errors()->first(),
+            ]);
+//            return $validator;
         }
 
 
@@ -82,8 +87,14 @@ class HomeController extends Controller
             'price' => $request->price,
             'image' => $file_name,
         ]);
+// response to form
+//        return redirect()->back()->with(['success' => 'it\'s Done']);
 
-        return redirect()->back()->with(['success' => 'it\'s Done']);
+//        response to js
+        return response()->json([
+            'status' => true,
+            'message' => 'It\'s Done',
+        ]);
     }
 
     public function messages() {

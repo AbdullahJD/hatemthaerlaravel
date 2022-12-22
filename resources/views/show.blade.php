@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>{{websiteTitle()}}</title>
     <style>
         table {
             font-family: arial, sans-serif;
@@ -36,7 +37,7 @@
         @if(empty($customer->image))
             <td><img src="{{asset('img/default.png')}}" style="height: 50px; width: 50px;"></td>
         @else
-            <td><img src="{{asset('images/'.$customer->image)}}" style="height: 100px;"></td>
+            <td><img src="{{asset(imagePath().$customer->image)}}" style="height: 100px;"></td>
         @endif
 
         <td>{{$customer->name}}</td>

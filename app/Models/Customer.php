@@ -13,4 +13,9 @@ class Customer extends Model
     protected $table = 'customers';
     protected $fillable = ['name','image','comment','is_active','price'];
     protected $hidden = [];
+
+    public function details() {
+        $this->hasOne(CustomerDetail::class, 'customer_id');
+    }
+
 }

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 <ul>
     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
         <li>
@@ -23,7 +24,7 @@
     <h4>{{$errors->first()}}</h4>
 @endif
 
-<form method="post" id="sendData" enctype="multipart/form-data">
+<form method="post" id="sendData">
     @csrf
 {{--    @error('name')--}}
 {{--        {{$message}}--}}
@@ -41,8 +42,9 @@
     <input type="submit" class="send_data" value="Send My Data"><br>
 </form>
 
-<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
 
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script>
     $('.send_data').on('click', function (e) {
        e.preventDefault();
@@ -56,7 +58,20 @@
            cache: false,
            data: formData,
            success: function (data) {
-                console.log(data);
+                if (data.status == true) {
+                    alert(data.message);
+                } else {
+                    console.log(data.message);
+                    Toastify({
+                        text: data.message,
+                        duration: 3000,
+                        gravity: "top",
+                        position: "left",
+                        style: {
+                            background: "red",
+                        },
+                    }).showToast();
+                }
            },
            error: function (data) {
                 console.log(data);
