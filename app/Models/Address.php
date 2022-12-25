@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerDetail extends Model
+class Address extends Model
 {
     use HasFactory;
-    protected $table = 'customer_details';
-    protected $hidden = ['code'];
+    protected $table = 'addresses';
+
     public function customer () {
-        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+        return $this->belongsTo(Customer::class,'customer_id');
     }
 }

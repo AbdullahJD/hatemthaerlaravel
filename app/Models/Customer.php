@@ -15,7 +15,11 @@ class Customer extends Model
     protected $hidden = [];
 
     public function details() {
-        $this->hasOne(CustomerDetail::class, 'customer_id');
+        return $this->hasOne(CustomerDetail::class, 'customer_id','id');
+    }
+
+    public function addresses() {
+        return $this->hasMany(Address::class, 'customer_id');
     }
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -9,6 +10,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => [ 'l
 
 
 Auth::routes();
+
+// customers
+Route::get('/customers/index', [CustomerController::class, 'index'])->name('customers.index');
+
+// end customers
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/showData', [HomeController::class, 'showData'])->name('showData');
