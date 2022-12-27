@@ -13,6 +13,12 @@ Auth::routes();
 
 // customers
 Route::get('/customers/index', [CustomerController::class, 'index'])->name('customers.index');
+Route::get('/customers/getCustomerAddresses/{id}', [CustomerController::class, 'getCustomerAddresses'])->name('customers.getCustomerAddresses');
+Route::get('/customers', [CustomerController::class, 'getCustomers'])->name('customers.getCustomers');
+Route::get('/customers/getCustomerJobs', [CustomerController::class, 'getCustomerJobs'])->name('customers.getCustomerJobs');
+Route::get('/customers/getJobCustomers', [CustomerController::class, 'getJobCustomers'])->name('customers.getJobCustomers');
+Route::get('/customers/insertCustomerJobs', [CustomerController::class, 'insertCustomerJobs'])->name('customers.insertCustomerJobs');
+Route::post('/customers/insertCustomerJobsPost', [CustomerController::class, 'insertCustomerJobsPost'])->name('customers.insertCustomerJobsPost');
 
 // end customers
 

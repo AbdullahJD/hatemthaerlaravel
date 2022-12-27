@@ -19,7 +19,11 @@ class Customer extends Model
     }
 
     public function addresses() {
-        return $this->hasMany(Address::class, 'customer_id');
+        return $this->hasMany(Address::class, 'customer_id', 'id');
+    }
+
+    public function jobs() {
+        return $this->belongsToMany(Job::class,'customer_jobs','customer_id','job_id');
     }
 
 }
